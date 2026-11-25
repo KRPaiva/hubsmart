@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Workspace | HubSmart Brainstorm{% endblock %}
+
+{% block content %}
+<main class="min-h-screen bg-gradient-to-br from-slate-50 via-white to-teal-50">
+  <header class="border-b border-slate-200 bg-white/85 backdrop-blur">
+    <div class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-[0.28em] text-teal-600">HubSmart Brainstorm</p>
+        <h1 class="mt-1 text-2xl font-bold tracking-tight text-slate-950">Laboratório SM2</h1>
+        <p class="mt-1 text-sm text-slate-600">Mini-versão para estudar e adaptar repetição espaçada ao usuário.</p>
+      </div>
+      <div class="rounded-2xl border border-teal-200 bg-teal-50 px-4 py-3 text-sm font-semibold text-teal-800">
+        {{ due_count }} revisões vencidas
+      </div>
+    </div>
+  </header>
+
+  <div class="mx-auto grid max-w-7xl gap-5 px-4 py-6 sm:px-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:px-8">
+    <aside class="rounded-3xl border border-slate-200 bg-white p-3 shadow-sm">
+      <nav class="grid gap-2" aria-label="Ferramentas">
+        <button
+          type="button"
+          class="flex items-center gap-3 rounded-2xl px-4 py-3 text-left text-sm font-bold text-slate-700 transition hover:bg-slate-100"
+          hx-get="/workspace/reviews"
+          hx-target="#workspace-content"
+          hx-swap="innerHTML"
+        >
+          <i data-lucide="brain" class="h-4 w-4 text-teal-600"></i>
+          Revisão SM2
+        </button>
+        <button
+          type="button"
+          class="flex items-center gap-3 rounded-2xl px-4 py-3 text-left text-sm font-bold text-slate-700 transition hover:bg-slate-100"
+          hx-get="/workspace/flashcards"
+          hx-target="#workspace-content"
+          hx-swap="innerHTML"
+        >
+          <i data-lucide="layers" class="h-4 w-4 text-blue-600"></i>
+          Flashcards
+        </button>
+      </nav>
+      <div class="mt-4 rounded-2xl bg-slate-50 p-4 text-xs leading-5 text-slate-600">
+        Altere primeiro `app/services/spaced_repetition.py` e valide com os testes.
+      </div>
+    </aside>
+
+    <section
+      id="workspace-content"
+      class="min-h-[70vh] overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm"
+      hx-get="/workspace/reviews"
+      hx-trigger="load"
+      hx-swap="innerHTML"
+    >
+      <div class="p-8 text-sm text-slate-500">Carregando laboratório...</div>
+    </section>
+  </div>
+</main>
+{% endblock %}

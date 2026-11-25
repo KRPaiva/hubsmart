@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "hubsmart-brainstorm"
+version = "0.1.0"
+description = "Mini-versão didática do HubSmart para estudar SM2"
+authors = ["HubSmart"]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.12,<3.15"
+fastapi = "0.136.1"
+uvicorn = "0.47.0"
+jinja2 = "3.1.6"
+pydantic = "2.13.4"
+sqlalchemy = ">=2.0.49,<3.0.0"
+alembic = ">=1.17.2,<2.0.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = ">=9.0.3,<10.0.0"
+httpx = ">=0.28.1,<0.29.0"
+freezegun = ">=1.5.5,<2.0.0"
+ruff = "^0.16.3"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+exclude = [".venv", ".git", "alembic/versions"]
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "B", "UP"]
+ignore = ["E501", "B008", "B905"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/support.py" = ["E402"]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

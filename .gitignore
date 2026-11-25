@@ -1,0 +1,16 @@
+.env
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+*.sqlite3
+*.db
+*.db-shm
+*.db-wal
+hubsmart_brainstorm.db
+hubsmart_brainstorm_test.db
